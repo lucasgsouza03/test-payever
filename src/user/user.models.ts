@@ -13,9 +13,6 @@ export class User {
 
   @Prop({ default: Date.now })
   date_added: Date;
-
-  @Prop({ default: Date.now })
-  image: Date;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

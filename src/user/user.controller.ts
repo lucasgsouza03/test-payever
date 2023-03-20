@@ -1,13 +1,15 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { AppService } from './app.service';
+import { UserService } from './user.service';
 import { User } from './user.models';
 import { UserAvatarDto } from './userAvatar.dto';
+import { EventPattern, MessagePattern } from '@nestjs/microservices';
 
 @Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+export class UserController {
+  constructor(private readonly appService: UserService) {}
 
   @Post('/api/users')
+  @EventPattern('user')
   async createUser(@Body() userDto: User) {
     return this.appService.createUser(userDto);
   }
